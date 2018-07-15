@@ -1,0 +1,32 @@
+<%= form_with(model: screen, local: true) do |form| %>
+  <% if screen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(screen.errors.count, "error") %> prohibited this screen from being saved:</h2>
+
+      <ul>
+      <% screen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :screen_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interval %>
+    <%= form.text_field :interval, id: :screen_interval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :screen_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
