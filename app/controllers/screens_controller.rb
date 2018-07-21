@@ -1,5 +1,5 @@
 class ScreensController < ApplicationController
-  before_action :set_screen, only: [:show, :edit, :update, :destroy]
+  before_action :set_screen, only: [:show, :edit, :update, :destroy, :slideshow]
   before_action :authenticate_user!
 
   def index
@@ -58,6 +58,10 @@ class ScreensController < ApplicationController
     end
   end
 
+  def slideshow
+
+  end
+
   private
     def set_screen
       @screen = Screen.find(params[:id])
@@ -67,4 +71,3 @@ class ScreensController < ApplicationController
       params.require(:screen).permit(:name, :interval, :user_id, images: [])
     end
 end
-g
