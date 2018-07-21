@@ -26,6 +26,16 @@
     <%= form.text_field :user_id, id: :screen_user_id %>
   </div>
 
+  <% if screen %>
+    <% screen.images.each_with_index do |image, index| %>
+      <%= image_tag image.url %>
+      <%= link_to "Delete", screen_image_path(screen, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
+    <% end %>
+  <% end %>
+
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

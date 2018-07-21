@@ -31,8 +31,16 @@ class ScreensController < ApplicationController
   end
 
   def update
+    @screen.name     = screen_params[:name]
+    @screen.interval = screen_params[:interval]
+    @screen.user_id  = screen_params[:user_id]
+
+    images = @screen.images
+    images += screen_params[:images]
+    @screen.images = images
+
     respond_to do |format|
-      if @screen.update(screen_params)
+      if @screen.save
         format.html { redirect_to @screen, notice: 'Screen was successfully updated.' }
         format.json { render :show, status: :ok, location: @screen }
       else
@@ -56,7 +64,7 @@ class ScreensController < ApplicationController
     end
 
     def screen_params
-      params.require(:screen).permit(:name, :interval, :user_id)
+      params.require(:screen).permit(:name, :interval, :user_id, images: [])
     end
 end
 g
