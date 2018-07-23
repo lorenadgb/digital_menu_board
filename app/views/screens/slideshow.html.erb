@@ -1,16 +1,20 @@
-<%= @screen.id %>
-
-
-<div class="row">
-<% @screen.images.each do |slide| %>
-   <div class="col-md-3 col-sm-3 col-xs-6">
-     <%= image_tag slide.url, class: "img-responsive" %>
+<div id = "myCarousel" class = "carousel slide" data-ride="carousel" >
+  <div class="carousel-inner img">
+    <div class="item active">
+      <%= image_tag @screen.images.first.url %>
     </div>
-<% end %>
+    <% @screen.images.drop(1).each do |photo| %>
+        <div class="item">
+          <%= image_tag photo.url %>
+        </div>
+    <% end %>
+  </div>
 </div>
 
-<script>
-  $(function(){
-    $("#slides").electricSlide();
-  })
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#myCarousel').carousel({
+      interval: 1000
+    });
+  });
 </script>
