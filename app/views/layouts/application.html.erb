@@ -9,9 +9,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= bootstrap_flash %>
-      <%= yield %>
+    <div id="wrapper">
+      <div class="container">
+        <%= bootstrap_flash %>
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
