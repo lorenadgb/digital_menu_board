@@ -44,6 +44,8 @@ gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
+gem 'simple_form'
+
 group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
