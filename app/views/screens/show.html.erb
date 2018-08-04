@@ -12,15 +12,18 @@
 
 <p>
   <strong>User:</strong>
-  <%= @screen.user %>
+  <%= @screen.user.email %>
 </p>
 
 <p>
   <strong>Images:</strong>
-  <% @screen.images.each do |image| %>
-      <%= image_tag image.url %>
-  <% end %>
 </p>
+
+<% @screen.images.each do |image| %>
+  <p>
+    <%= image_tag image.url, height: '200', width: '290' %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_screen_path(@screen) %> |
 <%= link_to 'Back', screens_path %>

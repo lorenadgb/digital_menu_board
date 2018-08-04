@@ -1,30 +1,29 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Screens</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th style="width: 15%">Slideshow</th>
+      <th style="width: 15%">Name</th>
+      <th style="width: 15%">Number of images</th>
+      <th style="width: 15%">Interval</th>
+      <th style="width: 25%">Updated at</th>
     </tr>
   </thead>
 
   <tbody>
     <% @screens.each do |screen| %>
       <tr>
-        <td><%= screen.name %></td>
-        <td><%= screen.user %></td>
-        <td><%= link_to 'Show', screen %></td>
+        <td><%= link_to_image(screen.images.first.url, slideshow_screens_path(screen)) if screen.images.first %></td>
+        <td><%= link_to screen.name, screen_path(screen) %></td>
+        <td><%= screen.images.count %></td>
+        <td><%= "#{screen.interval} seconds" %></td>
+        <td><%= date_string_for(screen.updated_at) %></td>
         <td><%= link_to 'Edit', edit_screen_path(screen) %></td>
-        <td><%= link_to 'Slideshow', slideshow_screens_path(screen) %></td>>
         <td><%= link_to 'Destroy', screen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Screen', new_screen_path %>
+<%= link_to 'New Screen', new_screen_path, class: 'btn btn-primary' %>

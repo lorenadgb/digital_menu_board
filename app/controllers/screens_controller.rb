@@ -18,6 +18,7 @@ class ScreensController < ApplicationController
 
   def create
     @screen = Screen.new(screen_params)
+    @screen.user = current_user
 
     respond_to do |format|
       if @screen.save
