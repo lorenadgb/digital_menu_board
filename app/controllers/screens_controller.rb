@@ -1,6 +1,6 @@
 class ScreensController < ApplicationController
   before_action :set_screen, only: [:show, :edit, :update, :destroy, :slideshow]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:slideshow]
 
   def index
     @screens = Screen.all
@@ -61,7 +61,6 @@ class ScreensController < ApplicationController
   end
 
   def slideshow
-
   end
 
   private
