@@ -34,11 +34,12 @@ class ScreensController < ApplicationController
   def update
     @screen.name     = screen_params[:name]
     @screen.interval = screen_params[:interval]
-    @screen.user_id  = screen_params[:user_id]
 
-    images = @screen.images
-    images += screen_params[:images]
-    @screen.images = images
+    if screen_params[:images]
+      images = @screen.images
+      images += screen_params[:images]
+      @screen.images = images
+    end
 
     respond_to do |format|
       if @screen.save

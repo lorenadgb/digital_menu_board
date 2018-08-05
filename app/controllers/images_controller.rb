@@ -28,8 +28,8 @@ class ImagesController < ApplicationController
   def remove_image_at_index(index)
     remain_images = @screen.images
     deleted_image = remain_images.delete_at(index)
-    deleted_image.remove!
-    @screen.images = remain_images
+    deleted_image.try(:remove!)
+    remain_images.empty? ? @screen.update_column(:images, nil) : @screen.images = remain_images
     @screen.save
   end
 
