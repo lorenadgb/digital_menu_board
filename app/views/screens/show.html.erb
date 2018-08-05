@@ -26,4 +26,5 @@
 <% end %>
 
 <%= link_to 'Edit', edit_screen_path(@screen) %> |
+<%= link_to 'Slideshow', slideshow_screens_path(@screen) if @screen.images.first %> |
 <%= link_to 'Back', screens_path %>

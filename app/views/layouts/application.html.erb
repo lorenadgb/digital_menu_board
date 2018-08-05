@@ -9,12 +9,16 @@
   </head>
 
   <body>
-    <div id="wrapper">
-      <div class="container">
-        <%= render 'layouts/topnav' %>
-        <%= yield %>
+    <% unless controller.action_name == 'slideshow' %>
+      <div id="wrapper">
+        <div class="container">
+          <%= render 'layouts/topnav' %>
+          <%= yield %>
+        </div>
+        <%= render 'layouts/footer' %>
       </div>
-      <%= render 'layouts/footer' %>
-    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

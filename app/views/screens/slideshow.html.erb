@@ -5,7 +5,7 @@
     </div>
     <% @screen.images.drop(1).each do |photo| %>
         <div class="item">
-          <%= image_tag photo.url %>
+          <%= image_tag photo.url, :size => '100X100' %>
         </div>
     <% end %>
   </div>
@@ -14,7 +14,12 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#myCarousel').carousel({
-      interval: 1000
+      interval: 1000 * <%= @screen.interval.to_int %>
     });
   });
 </script>
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+</style>
